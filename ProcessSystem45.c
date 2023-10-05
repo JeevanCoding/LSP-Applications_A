@@ -1,0 +1,40 @@
+
+
+// 23/07/2023
+
+// fork()
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+
+int main()
+{
+	int Ret=0;
+	int PID=0;
+	
+	Ret=fork();
+	
+	if(Ret==0)   // child
+	{
+		printf(" Child process is running\n");
+		printf(" Child says : PID of parent process is : %d\n",getppid());   // 3831
+		printf(" Child says : PID of child process is : %d\n",getpid());     // 3832
+ 
+	}
+	else     // parent
+	{
+		printf(" Parent process is running \n");
+		printf("Parent says : PID of child process is : %d\n",Ret);           // 3832
+		printf("Parent says : PID of parent process is : %d\n",getpid());     // 3831
+		printf("Parent says : PID of parent process of parent i.e terminal is : %d\n",getppid());  // 3669
+
+	}
+	
+	
+	
+	return 0;
+}
+
+
+
